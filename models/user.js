@@ -16,25 +16,25 @@ const userSchema = new Schema(
         "A valid email address is required",
       ],
     },
-//     github: {
-//       type: String,
-//       required: true,
-//       max_length: 50,
-//     },
-//     assignments: [assignmentSchema],
-//   },
-//   {
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Thought'
+      }
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
     toJSON: {
-      getters: true,
+      virtual: true
     },
+    id: false
   }
 );
-// userSchema
-//   .virtual('fullName')
-//   // Getter
-//   .get(function () {
-//     return `${this.first} ${this.last}`;
 
-const User = model('User', userSchema);
+
 
 module.exports = User;
